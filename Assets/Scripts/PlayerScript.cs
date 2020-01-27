@@ -8,6 +8,8 @@ public class PlayerScript : MonoBehaviour
     public float jumpForce = 5.0f;
     public bool isFiring = false;
 
+    public GameObject death;
+
     private SpriteRenderer sprite;
 
     // Start is called before the first frame update
@@ -62,6 +64,6 @@ public class PlayerScript : MonoBehaviour
         }
 
         Move();
-
+        
     }
 }
