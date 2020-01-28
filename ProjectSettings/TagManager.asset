@@ -9,6 +9,7 @@ TagManager:
   - H3
   - H1_2
   - Enemy
+  - EndOfLevel
   layers:
   - Default
   - TransparentFX
