@@ -21,10 +21,10 @@ public class PlayerScript : MonoBehaviour
 
     void Fire()
     {
-        WeaponScript weapon = GetComponent<WeaponScript>();
-        if (weapon != null)
+        WeaponScript gun = GetComponent<WeaponScript>();
+        if (gun != null)
         {
-            weapon.Attack(false);
+            gun.Shoot(false);
         }
     }
 

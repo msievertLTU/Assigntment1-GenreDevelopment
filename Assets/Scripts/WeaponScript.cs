@@ -6,45 +6,44 @@ public class WeaponScript : MonoBehaviour
 {
 
     public Transform bulletPrefab;
-    public float shootingRate = 0.25f;
-    private float bulletCooldown;
+    public float shootingRate = 0.50f;
+    private float bulletTimer;
 
     void Start()
     {
-        bulletCooldown = 0f;
+        bulletTimer = 0f;
     }
 
     void Update()
     {
-        if (bulletCooldown > 0)
+        if (bulletTimer > 0)
         {
-            bulletCooldown -= Time.deltaTime;
+            bulletTimer -= Time.deltaTime;
         }
     }
 
-    public void Attack(bool isEnemy)
+    public void Shoot(bool isEnemy)
     {
-        if (CanAttack)
+        if (attackAvailable() == 1)
         {
-            bulletCooldown = shootingRate;
+            bulletTimer = shootingRate;
 
             var newBullet = Instantiate(bulletPrefab);
 
             newBullet.position = transform.position;
 
             BulletScript bullet = newBullet.gameObject.GetComponent<BulletScript>();
-            if (bullet != null)
-            {
-                bullet.isEnemyShot = isEnemy;
-            }
         }
     }
 
-    public bool CanAttack
-    {
-        get
+    int attackAvailable() {
+        if (bulletTimer <= 0)
         {
-            return bulletCooldown <= 0f;
+            return 1;
+        }
+        else
+        {
+            return 0;
         }
     }
 }
